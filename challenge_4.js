@@ -15,10 +15,11 @@ exports.largestPalindromeProduct = function(multiplicands, digits){
 for (factor_0 = 100; factor_0 <= 999; factor_0++){
   for (factor_1 = 100; factor_1 <= 999; factor_1++){
     var product = factor_0 * factor_1;
-    var numberToString = product.toString();
-    if (numberToString == numberToString.reverse){
-      console.log(numberToString);
-      // numberToString = palindromeNumber;
+    var numberToString = product.split("");
+    console.log(numberToString);
+    if (product === numberToString.reverse){
+      palindromeNumber == product;
+      break;
     };
   };
 };
