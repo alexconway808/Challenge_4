@@ -10,19 +10,41 @@
 exports.largestPalindromeProduct = function(multiplicands, digits){
   var factor_0 = 0;
   var factor_1 = 0;
-  var palindromeNumber = 0;
+  var palindromeNumber = 0;  //largest value stored here
+
+
   // do your work here
-for (factor_0 = 100; factor_0 <= 999; factor_0++){
-  for (factor_1 = 100; factor_1 <= 999; factor_1++){
-    var product = factor_0 * factor_1;
-    var numberToString = product.split("");
-    console.log(numberToString);
-    if (product === numberToString.reverse){
-      palindromeNumber == product;
-      break;
+  for (x = 100; x <= 999; x++){
+    // NOTE: Y = X so that we don't have duplicates
+    for (y = x; y <= 999; y++){
+      var product = x * y;
+
+      //EX: 10000
+      var numberToString = product.toString();
+
+      //into array, split, EX [1,0,0,0,0]
+      // var numberToString_ar = numberToString.split(""); 
+      
+      //reverse the string, EX [0,0,0,0,1]
+      // var reverseofTheString = numberToString_ar.reverse();
+
+      //compage numberToString_ar and reverseofTheString
+      //rejoin into strings
+      var numberToString_reverse = numberToString.split("").reverse().join("");
+
+      //compare numberToString_ar == reversOfTheString_ar
+      if (numberToString == numberToString_reverse){
+        console.log(numberToString, "is a Palindrome");
+
+        //Find the largest values Palindrome
+        if(parseInt(numberToString) > palindromeNumber){
+        palindromeNumber = parseInt(numberToString);
+        factor_0 = x;
+        factor_1 = y;
+        };
+      };
     };
   };
-};
 
   
   return {
@@ -31,3 +53,4 @@ for (factor_0 = 100; factor_0 <= 999; factor_0++){
     palindromeNumber : palindromeNumber
   };
 };
+
